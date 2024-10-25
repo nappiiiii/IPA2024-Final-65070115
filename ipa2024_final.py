@@ -12,6 +12,7 @@ import os
 
 from restconf_final import create, delete, enable, disable, status
 from netmiko_final import gigabit_status
+from ansible_final import showrun
 #######################################################################################
 # 2. Assign the Webex access token to the variable ACCESS_TOKEN using environment variables.
 
@@ -91,8 +92,8 @@ while True:
             responseMessage = status()
         elif command == "gigabit_status":
             responseMessage = gigabit_status()
-        # elif command == "showrun":
-        #    responseMessage = showrun()
+        elif command == "showrun":
+           responseMessage = showrun()
         else:
             responseMessage = "Error: No command or unknown command"
         
