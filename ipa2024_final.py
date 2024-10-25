@@ -119,7 +119,7 @@ while True:
                 "text": "show running config",
                 "files": (filename,fileobject,filetype),
             }
-            # postData = MultipartEncoder(postData)
+            postData = MultipartEncoder(fields=postData)
             HTTPHeaders = {
             "Authorization": ACCESS_TOKEN,
             "Content-Type": postData.content_type,
