@@ -11,7 +11,7 @@ import time
 import os
 
 from restconf_final import create, delete, enable, disable, status
-from netmiko_final import gigabit_status
+# from netmiko_final import gigabit_status
 from ansible_final import showrun
 #######################################################################################
 # 2. Assign the Webex access token to the variable ACCESS_TOKEN using environment variables.
@@ -71,7 +71,7 @@ while True:
 
     # check if the text of the message starts with the magic character "/" followed by your studentID and a space and followed by a command name
     #  e.g.  "/66070123 create"
-    if message.startswith("/65070115"):
+    if message.startswith("/65070115") == True:
 
         # extract the command
         command = message.split(" ", 1)
@@ -90,8 +90,8 @@ while True:
             responseMessage = disable() 
         elif command == "status":
             responseMessage = status()
-        elif command == "gigabit_status":
-            responseMessage = gigabit_status()
+        # elif command == "gigabit_status":
+        #     responseMessage = gigabit_status()
         elif command == "showrun":
            responseMessage = showrun()
         else:
@@ -120,7 +120,7 @@ while True:
                 "text": "show running config",
                 "files": (filename,fileobject,filetype),
             }
-            # postData = MultipartEncoder(postData)
+            postData = MultipartEncoder(fields=postData)
             HTTPHeaders = {
             "Authorization": ACCESS_TOKEN,
             "Content-Type": postData.content_type,
